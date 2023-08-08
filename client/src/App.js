@@ -19,14 +19,14 @@ function App() {
 
   return (
     <div className="App">
-      {/* <h3>Join a chat !</h3>
+      <h3>Join a chat !</h3>
       <input type="text" placeholder="John" onChange={(event) =>{
         setUsername(event.target.value)}}>
       </input>
       <input type="text" placeholder="Room 1" onChange={(event) =>{
         setRoom(event.target.value)}}>
       </input>
-      <button onClick={joinRoom}>Join a room</button> */}
+      <button onClick={joinRoom}>Join a room</button>
 
  
       <Chat socket={socket} username={username} room={room}/>

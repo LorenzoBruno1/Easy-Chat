@@ -1,26 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import '../App.css'
 import MessageHist from './MessageHist'
 import Send from '../assets/send.svg'
+import ScrollToBottom from "react-scroll-to-bottom"
 
 function Chat({ socket, username, room }) {
-
     const [currentMessage, setCurrentMessage] = useState("");
-
+    const [messageList, setMessageList] = useState([]);
+  
     const sendMessage = async () => {
-        if (currentMessage !== "") {
-            const messageData = {
-                room: room,
-                author: username,
-                message: currentMessage,
-                time:
-                    new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
-            }
-
-            await socket.emit("send_message", messageData);
-        }
-    }
-
+      if (currentMessage !== "") {
+        const messageData = {
+          room: room,
+          author: username,
+          message: currentMessage,
+          time:
+            new Date(Date.now()).getHours() +
+            ":" +
+            new Date(Date.now()).getMinutes(),
+        };
+  
+        await socket.emit("send_message", messageData);
+        setMessageList((list) => [...list, messageData]);
+        setCurrentMessage("");
+      }
+    };
+  
+    useMemo(() => {
+      socket.on("receive_message", (data) => {
+        setMessageList((list) => [...list, data]);
+      });
+    }, [socket]);
+  
     return (
         <div>
             <div className="fp-container">
@@ -29,21 +40,40 @@ function Chat({ socket, username, room }) {
                         <input type="text" id="search-input" placeholder="Rechercher" className="search-bar"></input>
                     </div>
                     <div className="message-components-container">
-                    <MessageHist />
-                    <MessageHist />
-                    <MessageHist />
+                        <MessageHist />
                     </div>
                 </div>
                 <div className="chat-container">
-                        <div className="chat-header">
-                            <span className="chat-header--name">John Doe</span>
-                            <span className="chat-header--activity">Connecté il y'a 4 min</span>
+                    <div className="chat-header">
+                        <span className="chat-header--name">John Doe</span>
+                        <span className="chat-header--activity">Connecté il y'a 4 min</span>
+                        <div className="chat-body" id="scrollbar5">
+                              
+                            {messageList.map((messageContent) => {
+                                return (
+                                    <div className="message" id={username === messageContent.author ? "you" : "other"}>
+                                        <div className="message-content">
+                                            <div className="message-content-text">{messageContent.message}</div>
+                                        </div>  
+                                        <div className="message-meta">
+                                            <p className='message-meta-author'>{messageContent.author}</p>
+                                            <p className='message-meta-time'>{messageContent.time}</p>
+                                        </div>
+                                    </div>
+                            
+                                    );
+                            })}
                         </div>
-                        <div className="message-input--container">
-                    <input
-                        type='text' placeholder='Envoyer un message' className ="message-input" onChange={(event) => {
-                            setCurrentMessage(event.target.value);
-                        }} ></input>
+                    </div>
+                    <div className="message-input--container">
+                        <input
+                            type='text' value={currentMessage} placeholder='Envoyer un message' className="message-input" onChange={(event) => {
+                                setCurrentMessage(event.target.value);
+                            }} 
+                            onKeyDown={(event) => {        
+                                if (event.key === "Enter") {
+                                sendMessage();}
+                            }}></input>
                         <button onClick={sendMessage} className="send-message--btn"><img src={Send} alt="send" className="send-icon"></img></button>
                     </div>
                 </div>
