@@ -1,10 +1,12 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useRef, useState, useMemo, useEffect } from 'react'
 import '../App.css'
 import MessageHist from './MessageHist'
 import Send from '../assets/send.svg'
 import ScrollToBottom from "react-scroll-to-bottom"
 
 function Chat({ socket, username, room }) {
+
+    const chatBodyRef = useRef(null);
     const [currentMessage, setCurrentMessage] = useState("");
     const [messageList, setMessageList] = useState([]);
   
@@ -31,6 +33,11 @@ function Chat({ socket, username, room }) {
         setMessageList((list) => [...list, data]);
       });
     }, [socket]);
+
+    useEffect(() => {
+        // Scroll vers le bas chaque fois que le messageList est mis à jour
+        chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+      }, [messageList]);
   
     return (
         <div>
@@ -41,17 +48,22 @@ function Chat({ socket, username, room }) {
                     </div>
                     <div className="message-components-container">
                         <MessageHist />
+                        <MessageHist />
+                        <MessageHist />
+                        <MessageHist />
+                        <MessageHist />
+                        <MessageHist />
+                        <MessageHist />
                     </div>
                 </div>
                 <div className="chat-container">
                     <div className="chat-header">
                         <span className="chat-header--name">John Doe</span>
                         <span className="chat-header--activity">Connecté il y'a 4 min</span>
-                        <div className="chat-body" id="scrollbar5">
-                              
+                        <div className="chat-body" ref={chatBodyRef}>  
                             {messageList.map((messageContent) => {
                                 return (
-                                    <div className="message" id={username === messageContent.author ? "you" : "other"}>
+                                    <div className="message" key={messageContent.id} id={username === messageContent.author ? "you" : "other"}>
                                         <div className="message-content">
                                             <div className="message-content-text">{messageContent.message}</div>
                                         </div>  
@@ -62,7 +74,7 @@ function Chat({ socket, username, room }) {
                                     </div>
                             
                                     );
-                            })}
+                            })} 
                         </div>
                     </div>
                     <div className="message-input--container">
