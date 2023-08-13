@@ -2,7 +2,6 @@ import React, { useRef, useState, useMemo, useEffect } from 'react'
 import '../App.css'
 import MessageHist from './MessageHist'
 import Send from '../assets/send.svg'
-import ScrollToBottom from "react-scroll-to-bottom"
 
 function Chat({ socket, username, room }) {
 
