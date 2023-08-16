@@ -3,23 +3,64 @@
   margin:0;
   font-family: 'Archivo', sans-serif;
 }
-
+.login-page-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color:#0e0f2a ;
+}
+.login-page-title{
+  padding: 20px;
+  font-weight: 800;
+  font-size: 40px; 
+  color: #FFF;
+}
+.registered-trademark{
+  font-size: 10px;
+}
+.form-container{
+  border-radius: 10px;
+  height: 250px;
+  width: 400px;
+  background-color: #222239;
+}
+.login-input{
+  border: none;
+  margin-block: 10px;
+  padding: 15px;
+  width: 300px;
+  border-radius: 5px;
+  font-size: 15px;
+  background-color: #434459;
+  color: #FFF;
+}
+.login-input:focus{
+  outline: none;
+}
+.login-btn{
+  text-transform:uppercase ;
+  border: none;
+  border-radius: 20px;
+  margin-top: 15px;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 12px 20px 12px 20px;
+}
+/*************************** Chat page ************************/
 .send-icon{
   padding: 30px;
   height: 30px;
 }
-
 .chat-body::-webkit-scrollbar {
   display: none;
 }
-
 .fp-container{
   display: flex;
   height: 100vh;
   background-color: #131313;
-  
 }
-
 .side-container{
   display: flex;
   flex-direction: column; 
@@ -27,29 +68,26 @@
   flex:1;
   background-color: #202329;
 }
-
 .search-bar-container{
   margin-top: 20px;
 }
-
 .search-bar{
   display: flex;
   align-items: center;
   border: none;
-  background-color: #2e333d;
-  caret-color: #FFFF; 
-  color: #FFFF;
   font-size: 18px;
   padding:5px 5px 5px 40px;
   width: 250px; 
   height: 40px;
   border-radius: 10px;
-
+  background-color: #2e333d;
+  caret-color: #FFFF; 
+  color: #FFFF;
 }
 
 .message-components-container{
-  margin-top: 20px;
   overflow: auto;
+  margin-top: 20px;
 }
 
 .message-hist-container {
@@ -86,9 +124,9 @@
 }
 
 .message-hist-container--data, .message-hist-container--info{
-  color:white;
   margin-inline:10px;
   margin-block:10px;
+  color:white;
 }
 
 .message-hist-container--data{
@@ -99,8 +137,8 @@
 }
 
 .message-hist-container--text{
-  color:#545860;
   margin-block:5px;
+  color:#545860;
 }
 
 .icon1-img{
@@ -122,8 +160,8 @@
 .chat-header{
   display: flex;
   flex-direction: column;
-  color: white;
   justify-content: center;
+  color: #FFF;
   font-size: 18px;
   margin:30px 0 0 45px;
 }
@@ -133,9 +171,9 @@
 }
 
 .chat-body{
-  width: 100%;
   max-height: calc(100vh - 160px); /* Adjust the value as needed */
   overflow-y: auto;
+  width: 100%;
 }
 
 .message-input--container{
@@ -148,9 +186,9 @@
 .message-input{
   border: none;
   outline: none;
-  background-color:#202329; 
   font-size: 18px;
   width: 100%;
+  background-color:#202329; 
   caret-color: #FFFF; 
   color:#FFFF;
 }
@@ -178,31 +216,41 @@
 
 .chat-details-text{
   padding:10px;
-  color:white;
   font-size: 17px;
   font-weight: 800;
+  color:white;
 } 
 
 .message{
   display: flex;
   flex-direction: column-reverse;
-  background-color: #2e333d;
+  margin-left: auto;
   margin-top: 20px;
   max-width:300px;
   border-radius:15px;
   margin: 20px;
-  margin-left: auto;
   padding-right: 5px;
+  background-color: #2e333d;
 }
 
 #other{
   display: flex;
   flex-direction: column-reverse;
-  background-color: #2e333d;
   margin-top: 20px;
   max-width:300px;
   border-radius:15px;
   margin-left: 1px;
+  background-color: #2e333d;
+}
+
+#you{
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: 20px;
+  max-width:300px;
+  border-radius:15px;
+  margin-left: auto;
+  background-color: #2e333d;
 }
 
 .message-content-text{
@@ -222,8 +270,8 @@
 }
 
 .message-meta-time{
-  color: #545860;
   font-size: 12px;
+  color: #545860;
 }
 
 /******************************************* Login page ********************************************/
@@ -250,9 +298,9 @@
 }
 
 .login-page-left-title{
+  font-weight: bold;
   font-size: 40px;
   line-height: 50px;
-  font-weight: bold;
   letter-spacing: 1.4px;
   color: #FFFF;
 }
@@ -367,9 +415,9 @@
   border-radius:10px;
   margin-block: 20px;
   margin-inline: 15px;
-  background-color: #e9eff6;
   padding: 10px;
   font-size: 15px;
+  background-color: #e9eff6;
 }
 
 .firstname-input:focus,.lastname-input:focus{
