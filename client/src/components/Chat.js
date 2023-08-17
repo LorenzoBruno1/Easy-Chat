@@ -46,14 +46,13 @@ function Chat({ socket, username, room }) {
                         <input type="text" id="search-input" placeholder="Rechercher" className="search-bar"></input>
                     </div>
                     <div className="message-components-container">
-                        <MessageHist />
-
+                        <MessageHist room={room} lastMessage={messageList.length > 0 ? messageList[messageList.length - 1].message : ""}/>
                     </div>
                 </div>
                 <div className="chat-container">
                     <div className="chat-header">
-                        <span className="chat-header--name">John Doe</span>
-                        <span className="chat-header--activity">Connecté il y'a 4 min</span>
+                        <span className="chat-header--name">Room : {room}</span>
+                        <span className="chat-header--activity">En ligne🟢</span>
                         <div className="chat-body" ref={chatBodyRef}>
                             {messageList.map((messageContent) => {
                                 return (
@@ -88,6 +87,7 @@ function Chat({ socket, username, room }) {
                     <div className="chat-details-header">
                         <span className="chat-details-text">Détails du chat</span>
                     </div>
+                    <span className="chat-details-users">User {username} joined room:{room}</span>
                 </div>
             </div>
         </div>

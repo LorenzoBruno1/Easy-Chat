@@ -1,7 +1,7 @@
 import React from 'react'
 import icon1 from '../assets/icon1.jpg'
 
-function MessageHist() {
+function MessageHist({lastMessage, room}) {
   return (
     <div>
         <div className="message-hist-container">
@@ -9,11 +9,11 @@ function MessageHist() {
                 <img src={icon1} alt="icon" className="icon1-img" ></img>
             </div>
             <div className="message-hist-container--data">
-                <span>John Doe</span>
-                <span className="message-hist-container--text">Salut, comment vas-tu?</span>
+                <span>{room}</span>
+                <span className="message-hist-container--text">{lastMessage}</span>
             </div>
             <div className="message-hist-container--info">
-            <span>4min</span>
+            <span>Actif🟢</span>
             </div>
         </div>
     </div>

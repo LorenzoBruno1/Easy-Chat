@@ -21,6 +21,10 @@
   font-size: 10px;
 }
 .form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border-radius: 10px;
   height: 250px;
   width: 400px;
@@ -95,7 +99,7 @@
   margin-right: 10px;
   margin-block: 10px;
   border-radius: 15px;
-  max-width: 400px;
+  width: 380px;
 }
 
 .message-hist-container:hover {
@@ -127,6 +131,11 @@
   margin-inline:10px;
   margin-block:10px;
   color:white;
+}
+
+.message-hist-container--info{
+  margin-left: auto;
+  padding: 10px;
 }
 
 .message-hist-container--data{
@@ -171,7 +180,7 @@
 }
 
 .chat-body{
-  max-height: calc(100vh - 160px); /* Adjust the value as needed */
+  max-height: calc(100vh - 160px); 
   overflow-y: auto;
   width: 100%;
 }
@@ -205,8 +214,18 @@
 }
 
 .chat-details{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex:1;
   background-color: #131313;
+}
+
+.chat-details-users{
+  padding: 20px;
+  margin-top: 10px;
+  font-size: 18px;
+  color: #FFF;
 }
 
 .chat-details-header{
@@ -274,160 +293,8 @@
   color: #545860;
 }
 
-/******************************************* Login page ********************************************/
-
-.login-page-illustration{
-  height: 500px;
-}
-
-.login-page-fp-container{
-  display:flex;
-  height:100vh;
-}
-.login-page-right{
-  flex:0.8;
-  background-color: #84cffc;
-}
-.login-page-left{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  flex:1.2;
-  background-color: #acd3e6;
-}
-
-.login-page-left-title{
-  font-weight: bold;
-  font-size: 40px;
-  line-height: 50px;
-  letter-spacing: 1.4px;
-  color: #FFFF;
-}
 
 
-/******************************************* Right part ********************************************/
 
-.login-page-candle{
-  height: 200px;
-}
 
-.login-page-right{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
-.form-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.username-input,.password-input,.login-page-btn{
-  border: none;
-  width:350px;
-  height: 40px;
-  border-radius:10px;
-  margin-block: 15px;
-}
-
-.username-input,.password-input{
-  background-color: #e9eff6;
-  padding: 10px;
-  font-size: 15px;
-}
-
-.username-input:focus,.password-input:focus{
-  outline:none;
-}
-
-.login-page-btn{
-  cursor:pointer;
-  color:#FFFF;
-  background-color: #4460f1;
-  font-size: 15px;
-  box-shadow: #4460f1 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  height: 50px;
-}
-
-.separator {
-  position: relative; /* Assurez-vous que la div parente a une position relative */
-}
-
-.separator::before {
-  content: "";
-  position: absolute;
-  top: 50%; 
-  left: 0; 
-  width: 420px; 
-  height: 2px; 
-  margin-top:20px;
-  background-color: #ccc; 
-  transform: translateY(-50%); 
-}
-
-.login-page-socials{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.login-page-socials-container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor:pointer;
-  background-color: #FFF;
-  width: 350px;
-  margin-top:50px;
-  border-radius: 5px;
-  margin-inline: 30px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-}
-
-.login-page-socials-img{
-  height:30px;
-  padding: 10px 25px 10px 0px;
-}
-
-/******************************************************* Register page ******************************************************/
-
-.register-page-left{
-  background-color: #1874d2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  flex:1.2;
-}
-
-.register-page-name-container{
-  display: flex;
-}
-
-.firstname-input,.lastname-input{
-  border: none;
-  width:150px;
-  height: 40px;
-  border-radius:10px;
-  margin-block: 20px;
-  margin-inline: 15px;
-  padding: 10px;
-  font-size: 15px;
-  background-color: #e9eff6;
-}
-
-.firstname-input:focus,.lastname-input:focus{
-  outline: none;
-}
-
-.text-to-login{
-  padding: 25px;
-}
-
-.text-to-register{
-  padding: 20px 20px 20px 30px;
-}
